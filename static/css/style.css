@@ -163,3 +163,47 @@ small a:hover {
     color: white !important; /* jadi warna putih */
     opacity: 0.6;
 }
+
+/* tampilan mobile */
+@media screen and (max-width: 768px) {
+    body {
+        padding: 10px;
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    h2 {
+        font-size: 20px;
+    }
+    
+    h3 {
+        font-size: 18px;
+    }
+    
+    .story {
+        padding: 15px;
+        margin: 10px 0;
+        word-wrap: break-word; /* biar teks nggak overflow */
+    }
+    
+    .story-content {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    /* Buat tabel/konten lebar */
+    pre, code, .scrollable {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+    
+    /* Tombol share */
+    .share-btn {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
