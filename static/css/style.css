@@ -246,22 +246,3 @@ small a:hover {
         text-align: center;
     }
 }
-
-.story {
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    background: #f9f9f9;
-    border-radius: 8px;
-    box-sizing: border-box;
-}
-
-.story-content {
-    font-size: 16px;
-    line-height: 1.6;
-    white-space: normal; /* pastikan teks membungkus */
-}
-
-pre, code {
-    white-space: pre-wrap; /* biar kode/preformat juga bungkus */
-}
