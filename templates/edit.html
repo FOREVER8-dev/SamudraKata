@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit Cerita</h2>
+
+<form method="POST">
+
+<label>Judul</label>
+<input type="text" name="title" value="{{ story[0] }}" required>
+
+<br><br>
+
+<label>Author Notes</label>
+<textarea name="notes" rows="2">{{ story[1] }}</textarea>
+
+<br><br>
+
+<label>Cerita</label>
+<textarea name="content" rows="12" required>{{ story[2] }}</textarea>
+
+<br><br>
+
+<button type="submit">Update</button>
+
+</form>
+
+{% endblock %}

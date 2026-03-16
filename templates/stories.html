@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Lautan cerita dalam ombak yang tenang, kumpulan perasaan yang bernaung.</h2>
+
+{% if stories %}
+    {% for story in stories %}
+    <div class="story">
+
+        <h3>
+            <a href="/story/{{ story[6] }}">{{ story[1] }}</a>
+        </h3>
+
+        {% if story[2] %}
+            <p><em>{{ story[2] }}</em></p>
+        {% endif %}
+
+        <p>{{ story[3][:200] }}...</p>
+
+        <small>Oleh <a href="/user/{{ story[4] }}">{{ story[4] }}</a></small>
+
+        <hr>
+
+    </div>
+    {% endfor %}
+{% else %}
+<p>Belum ada cerita. Jadi yang pertama menoreh kata!</p>
+{% endif %}
+
+{% endblock %}

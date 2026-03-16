@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ story[0] }}</h2>
+
+{% if story[1] %}
+<p><em>{{ story[1] }}</em></p>
+{% endif %}
+
+<div class="story-content">
+{{ story[2]|safe }}
+</div>
+
+<button class="share-btn" onclick="copyLink(this)">🔗 Share Story</button>
+<span id="copied"></span>
+
+<small>Oleh <a href="/user/{{ story[3] }}">{{ story[3] }}</a> | {{ story[4] }}</small>
+
+{% endblock %}

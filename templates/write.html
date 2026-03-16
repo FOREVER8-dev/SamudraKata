@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+<h2>Tulis Cerita</h2>
+
+<form method="POST">
+
+<label>Judul</label><br>
+<input type="text" name="title" required>
+
+<br><br>
+
+<label>Author Notes</label><br>
+<textarea name="notes" rows="2" required></textarea>
+
+<br><br>
+
+<label>Cerita</label><br>
+
+<div id="editor" style="height:300px;"></div>
+
+<input type="hidden" name="content" id="content">
+
+<br><br>
+
+<button type="submit" name="action" value="draft">Save Draft</button>
+<button type="submit" name="action" value="publish">Publish</button>
+
+</form>
+
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Dashboard</h2>
+
+{% for story in stories %}
+
+<div class="story">
+
+<h3>
+    <a href="/story/{{ story[5] }}">{{ story[1] }}</a>
+</h3>
+
+{% if story[2] %}
+<p><em>{{ story[2] }}</em></p>
+{% endif %}
+
+<p>{{ story[3][:200] }}...</p>
+
+<small>{{ story[4] }}</small>
+
+<br><br>
+
+<a href="/edit/{{ story[0] }}">Edit</a> |
+<a href="/delete/{{ story[0] }}">Delete</a>
+
+{% if story[6] == "draft" %}
+| <a href="/publish/{{ story[0] }}">Publish</a>
+<span style="color:orange;">(Draft)</span>
+{% endif %}
+
+<hr>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}

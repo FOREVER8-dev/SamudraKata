@@ -1,0 +1,165 @@
+body {
+    background-color: #0b2545;
+    color: #f1f5f9;
+    font-family: Georgia, serif;
+    margin: 0;
+}
+
+/* navbar */
+nav {
+    background-color: #081c33;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* judul di kiri, link di kanan */
+}
+
+nav h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 20px; /* jarak antar link */
+}
+
+nav a {
+    color: #f1f5f9;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: #60a5fa;
+}
+
+/* main content */
+main {
+    padding: 40px;
+}
+
+/* bagian form */
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: #0f3460;
+    border: none;
+    color: white;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2563eb;
+}
+
+/* bagian story */
+.story {
+    background-color: #0f3460;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.story a {
+    color: #f1f5f9;
+    text-decoration: none; /* buat hilangin underline */
+}
+
+.story a:hover {
+    color: #60a5fa;
+}
+
+.story h3 {
+    color: #60a5fa;
+    margin-top: 0;
+}
+
+.story em {
+    color: #a0aec0;
+}
+
+.story small {
+    color: #cbd5e1;
+}
+
+.share-btn {
+    margin-top: 20px;
+    padding: 8px 16px;
+    background-color: transparent;
+    border: 1px solid #60a5fa;
+    color: #f1f5f9;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    transition: all 0.3s ease;
+}
+
+.share-btn:hover {
+    background-color: #60a5fa;
+    color: #081c33;
+}
+
+/* bagian story detail, bisa klik authornya (jadi si authornya ini link ke laman authornya) */
+small a {
+    color: #f1f5f9;      
+    text-decoration: none;
+}
+
+small a:visited {
+    color: #f1f5f9;      
+}
+
+small a:hover {
+    color: #60a5fa;      
+}
+
+/* container editor */
+.ql-container {
+    background: #0f3460;
+    color: white;
+    border: 1px solid #444;
+}
+
+/* bagian area nulis narasi */
+.ql-editor {
+    color: white;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+/* toolbar buat tulisannya bisa jadi bold, italic, dll */
+.ql-toolbar {
+    background: #111;
+    border: 1px solid #444;
+}
+
+/* icon toolbar */
+.ql-toolbar button svg {
+    fill: white;
+    stroke: white;
+}
+
+/* icon pas di hover */
+.ql-toolbar button:hover svg {
+    fill: #ccc;
+}
+
+/* icon aktif */
+.ql-toolbar button.ql-active svg {
+    fill: #fff;
+}
+
+/* bagian placeholder tulisan "Tulis ceritamu di sini..." */
+.ql-editor::before {
+    color: white !important; /* jadi warna putih */
+    opacity: 0.6;
+}
