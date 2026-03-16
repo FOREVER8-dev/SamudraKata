@@ -247,14 +247,21 @@ small a:hover {
     }
 }
 
-/* HP kecil banget */
-@media screen and (max-width: 480px) {
-    nav a, .navbar a {
-        padding: 10px !important;
-        font-size: 14px;
-    }
+.story {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-sizing: border-box;
 }
-    .story {
-        padding: 10px;
-    }
+
+.story-content {
+    font-size: 16px;
+    line-height: 1.6;
+    white-space: normal; /* pastikan teks membungkus */
+}
+
+pre, code {
+    white-space: pre-wrap; /* biar kode/preformat juga bungkus */
 }
