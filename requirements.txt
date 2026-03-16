@@ -1,4 +1,7 @@
-Flask
-pymysql
+flask
+flask-cors
+mysqlclient
 gunicorn
-werkzeug
+python-dotenv
+pymysql
+cryptography
