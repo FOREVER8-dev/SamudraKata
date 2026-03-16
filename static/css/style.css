@@ -208,21 +208,52 @@ small a:hover {
     }
 }
 
-/* HP layar kecil (max 480px) */
+/* tampilan navbar di mobile */
+@media screen and (max-width: 768px) {
+    /* Container navbar */
+    nav, .navbar, header nav {
+        display: flex;
+        flex-direction: column;  /* Menu jadi vertikal di HP */
+        align-items: center;
+        width: 100%;
+        padding: 10px 0;
+    }
+    
+    /* Menu items */
+    nav a, .navbar a, nav ul li a, .nav-link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px !important;
+        margin: 2px 0 !important;
+        border-bottom: 1px solid #eee;  /* Kasih garis pemisah */
+    }
+    
+    /* Hilangkan border bottom di link terakhir */
+    nav a:last-child, .navbar a:last-child {
+        border-bottom: none;
+    }
+    
+    /* Menu list (kalo pake ul/li) */
+    nav ul, .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+    
+    nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* HP kecil banget */
 @media screen and (max-width: 480px) {
-    body {
-        padding: 8px;
+    nav a, .navbar a {
+        padding: 10px !important;
         font-size: 14px;
     }
-    
-    h1 {
-        font-size: 22px;
-    }
-    
-    h2 {
-        font-size: 18px;
-    }
-    
+}
     .story {
         padding: 10px;
     }
