@@ -9,26 +9,30 @@ app.secret_key = "samudrakata_super_secret_2026"
 
 # Koneksi database (mode cloud sama mode local)
 def get_db():
-    # Cek apakah kita di cloud (Railway) atau lokal
-    if os.getenv('RAILWAY_ENVIRONMENT') or os.getenv('DB_HOST'):
-        # MODE CLOUD (Aiven)
-        return pymysql.connect(
-            host=os.getenv('DB_HOST'),
-            port=int(os.getenv('DB_PORT', 3306)),
-            user=os.getenv('DB_USER'),
-            password=os.getenv('DB_PASSWORD'),
-            database=os.getenv('DB_NAME'),
-            charset='utf8mb4'
-        )
-    else:
-        # MODE LOCAL (XAMPP)
-        return pymysql.connect(
-            host="localhost",
-            user="root",
-            password="",
-            database="samudrakata",
-            charset='utf8mb4'
-        )
+    try:
+        # kalau ada DB_HOST berarti otomatis pakai cloud
+        if os.getenv('DB_HOST'):
+            return pymysql.connect(
+                host=os.getenv('DB_HOST'),
+                port=int(os.getenv('DB_PORT', 3306)),
+                user=os.getenv('DB_USER'),
+                password=os.getenv('DB_PASSWORD'),
+                database=os.getenv('DB_NAME'),
+                charset='utf8mb4'
+            )
+        else:
+            # fallback ke local
+            return pymysql.connect(
+                host="localhost",
+                user="root",
+                password="",
+                database="samudrakata",
+                charset='utf8mb4'
+            )
+
+    except Exception as e:
+        print("DB ERROR:", e)
+        return None
 
 # fungsi slug berdasarkan judul narasi, jadi pas share link urlnya jadi title narasi
 def make_slug(title):
