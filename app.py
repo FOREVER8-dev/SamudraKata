@@ -7,13 +7,6 @@ import os
 app = Flask(__name__)
 app.secret_key = "samudrakata_super_secret_2026"
 
-db = get_db()
-
-if not db:
-    return "Database lagi error sementara, Mohon sabar yaaaa men temen"
-
-cursor = db.cursor()
-
 # Koneksi database (mode cloud sama mode local)
 def get_db():
     try:
