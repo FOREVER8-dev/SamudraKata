@@ -46,6 +46,10 @@ def make_slug(title):
 @app.route("/")
 def home():
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
     
     cursor.execute("""
@@ -65,6 +69,10 @@ def home():
 @app.route("/stories")
 def stories():
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
     
     cursor.execute("""
@@ -83,6 +91,10 @@ def stories():
 @app.route("/story/<slug>")
 def story_detail(slug):
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
     
     cursor.execute("""
@@ -115,8 +127,13 @@ def write():
         action = request.form.get("action")
         status = "published" if action == "publish" else "draft"
         
-        conn = get_db()
-        cursor = conn.cursor()
+    conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
+    cursor = conn.cursor()
+    
         cursor.execute("""
             INSERT INTO stories (title, notes, content, slug, author_id, status)
             VALUES (%s, %s, %s, %s, %s, %s)
@@ -137,6 +154,10 @@ def dashboard():
         return redirect("/login")
     
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
     cursor.execute("""
         SELECT id, title, notes, content, created_at, slug, status
@@ -153,6 +174,10 @@ def dashboard():
 @app.route("/user/<username>")
 def user_profile(username):
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
     
     cursor.execute("""
@@ -175,7 +200,12 @@ def delete_story(id):
         return redirect("/login")
     
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
+
     cursor.execute("DELETE FROM stories WHERE id=%s AND author_id=%s", 
                 (id, session["user_id"]))
     conn.commit()
@@ -190,6 +220,10 @@ def edit_story(id):
         return redirect("/login")
     
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
     
     if request.method == "POST":
@@ -222,7 +256,12 @@ def publish_story(id):
         return redirect("/login")
     
     conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
     cursor = conn.cursor()
+
     cursor.execute("""
         UPDATE stories
         SET status='published'
@@ -240,8 +279,13 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         
-        conn = get_db()
-        cursor = conn.cursor()
+    conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
+    cursor = conn.cursor()
+
         cursor.execute("SELECT * FROM users WHERE username=%s", (username,))
         user = cursor.fetchone()
         conn.close()
@@ -263,8 +307,12 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
         
-        conn = get_db()
-        cursor = conn.cursor()
+    conn = get_db()
+
+    if not conn:
+        return "Database lagi error sementara nih men temen"
+
+    cursor = conn.cursor()
         
         cursor.execute("SELECT * FROM users WHERE username=%s", (username,))
         if cursor.fetchone():
