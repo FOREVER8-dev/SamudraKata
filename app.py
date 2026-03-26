@@ -7,6 +7,13 @@ import os
 app = Flask(__name__)
 app.secret_key = "samudrakata_super_secret_2026"
 
+db = get_db()
+
+if not db:
+    return "Database lagi error, coba lagi nanti"
+
+cursor = db.cursor()
+
 # Koneksi database (mode cloud sama mode local)
 def get_db():
     try:
@@ -33,7 +40,7 @@ def get_db():
     except Exception as e:
         print("DB ERROR:", e)
         return None
-
+        
 # fungsi slug berdasarkan judul narasi, jadi pas share link urlnya jadi title narasi
 def make_slug(title):
     slug = title.lower()
