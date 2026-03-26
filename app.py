@@ -127,23 +127,25 @@ def write():
         action = request.form.get("action")
         status = "published" if action == "publish" else "draft"
         
-    conn = get_db()
+        conn = get_db()
 
-    if not conn:
-        return "Database lagi error sementara nih men temen"
+        if not conn:
+            return "Database lagi error sementara nih men temen"
 
-    cursor = conn.cursor()
-    
+        cursor = conn.cursor()
+        
         cursor.execute("""
             INSERT INTO stories (title, notes, content, slug, author_id, status)
             VALUES (%s, %s, %s, %s, %s, %s)
         """, (title, notes, content, slug, author_id, status))
+        
         conn.commit()
         conn.close()
         
         if status == "published":
             return redirect(url_for("stories"))
-        return redirect(url_for("dashboard"))
+        else:
+            return redirect(url_for("dashboard"))
     
     return render_template("write.html")
 
