@@ -10,14 +10,19 @@ app.secret_key = "samudrakata_super_secret_2026"
 # Koneksi database (mode cloud sama mode local)
 def get_db():
     try:
-        # kalau ada DB_HOST berarti otomatis pakai cloud
-        if os.getenv('DB_HOST'):
+        host = os.getenv('DB_HOST')
+        user = os.getenv('DB_USER')
+        password = os.getenv('DB_PASSWORD')
+        database = os.getenv('DB_NAME')
+
+        # kalau semua env ada otomatis pakai cloud
+        if host and user and password and database:
             return pymysql.connect(
-                host=os.getenv('DB_HOST'),
+                host=host,
                 port=int(os.getenv('DB_PORT', 3306)),
-                user=os.getenv('DB_USER'),
-                password=os.getenv('DB_PASSWORD'),
-                database=os.getenv('DB_NAME'),
+                user=user,
+                password=password,
+                database=database,
                 charset='utf8mb4'
             )
         else:
