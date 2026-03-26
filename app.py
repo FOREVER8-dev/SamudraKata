@@ -281,12 +281,12 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         
-    conn = get_db()
+        conn = get_db()
 
-    if not conn:
-        return "Database lagi error sementara nih men temen"
+        if not conn:
+            return "Database lagi error sementara nih men temen"
 
-    cursor = conn.cursor()
+        cursor = conn.cursor()
 
         cursor.execute("SELECT * FROM users WHERE username=%s", (username,))
         user = cursor.fetchone()
@@ -309,12 +309,12 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
         
-    conn = get_db()
+        conn = get_db()
 
-    if not conn:
-        return "Database lagi error sementara nih men temen"
+        if not conn:
+            return "Database lagi error sementara nih men temen"
 
-    cursor = conn.cursor()
+        cursor = conn.cursor()
         
         cursor.execute("SELECT * FROM users WHERE username=%s", (username,))
         if cursor.fetchone():
