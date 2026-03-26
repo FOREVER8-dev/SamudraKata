@@ -10,7 +10,7 @@ app.secret_key = "samudrakata_super_secret_2026"
 db = get_db()
 
 if not db:
-    return "Database lagi error, coba lagi nanti"
+    return "Database lagi error sementara, Mohon sabar yaaaa men temen"
 
 cursor = db.cursor()
 
